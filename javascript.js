@@ -1,139 +1,30 @@
-let nomeTecido;
-let nomeGola;
-let nomeModelo;
+let object = {
+  model: '',
+  neck: '',
+  material: '',
+  image: '',
+  owner: '',
+  author: ''
+};
+let ultimosPedidos = {
+  model: '',
+  neck: '',
+  material: '',
+  image: '',
+  owner: '',
+  author: ''
+};
+let user;
+let array = [];
 
-montarLoja()
-function montarLoja(){
-    let lojaHTML = document.querySelector("body")
-        lojaHTML.innerHTML += `
-        <header>
-        <img src="./img/Logo.png">
-    </header>
+receberNome()
 
-    <main>
-      <section class="displayMontarProduto">
-        <h1>Escolha o modelo</h1>
-        <div class="modelos">
-          <div>
-            <div class="t-shirt" onclick="escolherModelo('t-shirt')">
-              <img src="./img/tshirt.png">
-            </div>
-            <p>T-Shirt</p>
-          </div>
-
-          <div>
-            <div class="camiseta" onclick="escolherModelo('camiseta')">
-              <img src="./img/Camiseta.png">
-            </div>
-            <p>Camiseta</p>
-          </div>
-
-          <div>
-            <div class="manga-longa" onclick="escolherModelo('manga-longa')">
-              <img src="./img/Mangalonga.png">
-            </div>
-            <p>Manga Longa</p>
-          </div>
-
-        </div>
-
-        <h1>Escolha a gola</h1>
-        <div class="gola">
-          <div>
-            <div class="gola-v" onclick="escolherGola('gola-v')">
-              <img src="./img/GolaV.png">
-            </div>
-            <p>Gola V</p>
-          </div>
-
-          <div>
-            <div class="gola-redonda" onclick="escolherGola('gola-redonda')">
-              <img src="./img/GolaRedonda.png">
-            </div>
-            <p>Gola Redonda</p>
-          </div>
-
-          <div>
-            <div class="gola-polo" onclick="escolherGola('gola-polo')">
-              <img src="./img/GolaPolo.png">
-            </div>
-            <p>Gola Polo</p>
-          </div>
-        </div>
-
-        <h1>Escolha o tecido</h1>
-        <div class="tecido">
-          <div>
-            <div class="seda" onclick="escolherTecido('seda')">
-              <img src="./img/Seda.png">
-            </div>
-            <p>Seda</p>
-          </div>
-          <div>
-            <div class="algodao" onclick="escolherTecido('algodao')">
-              <img src="./img/Algodão.png">
-            </div>
-            <p>Algodão</p>
-          </div>
-        
-          <div>
-            <div class="poliester" onclick="escolherTecido('poliester')">
-              <img src="./img/Poliester.png">
-            </div>
-            <p>Poliéster</p>
-          </div>
-      </div>
-
-
-
-          <div class="link">
-            <h1>Imagem de referência</h1>
-            <input type="link" placeholder="Insira o link"> 
-          </div>
-
-          <button class="botao" onclick="validarPedido()">Confirmar pedido</button>
-
-      </section>
-
-      <section class="arteLateral">
-          <img src="./img/ilustração.png">
-      </section>
-    </main>
-
-    <footer>
-        <div class="displayProdutos">
-          <h2>Últimos pedidos</h2>
-
-          <div class="produtos">
-            
-            <div class="caixa">
-              <img src="./img/Blusa1.png" onclick="escolherProduto(this)">
-              <h3><strong>Criador:</strong>&nbsp;Nome</h3>
-            </div>
-  
-            <div class="caixa">
-              <img src="./img/Blusa2.png" onclick="escolherProduto(this)">
-              <h3><strong>Criador:</strong>&nbsp;Nome</h3>
-            </div>
-  
-            <div class="caixa">
-              <img src="./img/Blusa3.png" onclick="escolherProduto(this)">
-              <h3><strong>Criador:</strong>&nbsp;Nome</h3>
-            </div>
-  
-            <div class="caixa">
-              <img src="./img/Blusa4.png" onclick="escolherProduto(this)">
-              <h3><strong>Criador:</strong>&nbsp;Nome</h3>
-            </div>
-  
-            <div class="caixa">
-              <img src="./img/Blusa5.png" onclick="escolherProduto(this)">
-              <h3><strong>Criador:</strong>&nbsp;Nome</h3>
-            </div>
-          </div>
-        </div>
-    </footer>
-    `
+function receberNome(){
+  let nome = prompt("Insira o seu nome:")
+  user = nome
+  object.author = nome
+  object.owner = nome
+  pegarObiApi()
 }
 
 function escolherModelo(modelo){
@@ -143,15 +34,14 @@ function escolherModelo(modelo){
     }
     const modeloSelecionar = document.querySelector(`.${modelo}`)
     modeloSelecionar.classList.add("selecionado")
-
-    nomeModelo = modelo
-    console.log(nomeModelo)
+    object.model = modelo
+    console.log(modelo)
 
     validarPedido()
 }
 
 function escolherGola(gola){
-    const golaSelecionado = document.querySelector(".escolhaGola.selecionado")
+    const golaSelecionado = document.querySelector(".gola .selecionado")
     if (golaSelecionado != null){
         golaSelecionado.classList.remove("selecionado")
     }
@@ -159,14 +49,14 @@ function escolherGola(gola){
     const golaSelecionar = document.querySelector(`.${gola}`)
     golaSelecionar.classList.add("selecionado")
 
-    nomeGola = gola
-    console.log(nomeGola)
+    object.neck = gola
+    console.log(gola)
 
     validarPedido()
 }
 
 function escolherTecido(tecido){
-    const tecidoSelecionado = document.querySelector(".escolhaTecido.selecionado")
+    const tecidoSelecionado = document.querySelector(".tecido .selecionado")
     if (tecidoSelecionado != null){
         tecidoSelecionado.classList.remove("selecionado")
     }
@@ -174,15 +64,99 @@ function escolherTecido(tecido){
     const tecidoSelecionar = document.querySelector(`.${tecido}`)
     tecidoSelecionar.classList.add("selecionado")
 
-    nomeTecido = tecido
-    console.log(nomeTecido)
+    object.material = tecido
+    console.log(tecido)
 
     validarPedido()
 }
 
 function validarPedido(){
-    if(nomeModelo != null  && nomeGola !=  null && nomeTecido != null){
-        let confirmarPedido = document.querySelector(".botao")
-        confirmarPedido.classList.add("finalizar")
-    }
+  const validar = document.getElementById("botao");
+  if (object.model != null && object.neck != null && object.material != null && validarURL(document.getElementById("imgLink").value)) {
+      validar.classList.add("finalizar");
+  } else {
+      validar.classList.remove("finalizar");
+  }
+}
+
+function checkURL (){
+  if (validarURL(document.getElementById("imgLink").value)){
+      object.image = document.querySelector("input").value;
+  }
+  validarPedido();
+}
+
+function validarURL(url) {
+  return (url.match(/\.(ipeg|ipg|png)$/) != null);
+}
+
+function enviarPedido(){
+  const promise = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", object);
+  promise.then(sucesso)
+  promise.catch(falha)
+}
+
+function sucesso(){
+  alert("Encomenda realizada com sucesso!")
+  produtosCriados()
+  pegarObiApi()
+}
+
+function falha(){
+  alert("Ops, não conseguimos processar sua encomenda.")
+}
+
+function produtosCriados(){
+  const pedidos = document.querySelector(".produtos")
+  pedidos.innerHTML = ""
+  pedidos.innerHTML += `
+    <div class="caixa">
+      <img src="${object.image}">
+      <h3><strong>Criador:</strong>&nbsp;${object.author}</h3>
+    </div>
+  `
+}
+
+function pegarObiApi() {
+  const promise = axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts");
+  promise.then(camisasDaApi);
+  promise.catch();
+}
+
+function camisasDaApi(resposta) {   
+  let lista = resposta.data
+
+  console.log(lista.reverse())
+  lista.reverse();
+
+  const pedidos = document.querySelector(".produtos")
+  pedidos.innerHTML = ""
+  for (i = 0; i < lista.length; i++){
+    pedidos.innerHTML += `
+    <div class="caixa" onclick="encomendar(${[i]})">
+      <img src="${lista[i].image}">
+      <h3><strong>Criador:</strong>&nbsp;${lista[i].owner}</h3>
+    </div>
+    `
+  }
+  array = [...lista];
+}
+
+function encomendar(i){
+  ultimosPedidos.model = array[i].model;
+  ultimosPedidos.neck = array[i].neck;
+  ultimosPedidos.material = array[i].material;
+  ultimosPedidos.image = array[i].image;
+  ultimosPedidos.author = array[i].owner;
+  ultimosPedidos.owner = user;
+  let confirmar = confirm("Deseia pedir esse produto?");
+  if (confirmar){
+      ultimoPedido();
+  }
+}
+
+function ultimoPedido() {
+  const promise = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", ultimosPedidos);
+  promise.then(sucesso);
+  promise.catch(falha);
 }

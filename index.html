@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,25 +5,115 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">  
-    <meta name="author" content="Thais Reis">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>FashionDriven</title>
+    <title>Fashion Driven</title>
 
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
-
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
 
+    <header>
+      <img src="./img/Logo.png">
+    </header>
 
+    <main>
+      <section class="displayMontarProduto">
+        <h1>Escolha o modelo</h1>
+        <div class="modelos">
+          <div>
+            <div class="t-shirt" onclick="escolherModelo('t-shirt')">
+              <img src="./img/tshirt.png">
+            </div>
+            <p>T-Shirt</p>
+          </div>
+
+          <div>
+            <div class="top-tank" onclick="escolherModelo('top-tank')">
+              <img src="./img/Camiseta.png">
+            </div>
+            <p>Camiseta</p>
+          </div>
+
+          <div>
+            <div class="long" onclick="escolherModelo('long')">
+              <img src="./img/Mangalonga.png">
+            </div>
+            <p>Manga Longa</p>
+          </div>
+
+        </div>
+
+        <h1>Escolha a gola</h1>
+        <div class="gola">
+          <div>
+            <div class="v-neck" onclick="escolherGola('v-neck')">
+              <img src="./img/GolaV.png">
+            </div>
+            <p>Gola V</p>
+          </div>
+
+          <div>
+            <div class="round" onclick="escolherGola('round')">
+              <img src="./img/GolaRedonda.png">
+            </div>
+            <p>Gola Redonda</p>
+          </div>
+
+          <div>
+            <div class="polo" onclick="escolherGola('polo')">
+              <img src="./img/GolaPolo.png">
+            </div>
+            <p>Gola Polo</p>
+          </div>
+        </div>
+
+        <h1>Escolha o tecido</h1>
+        <div class="tecido">
+          <div>
+            <div class="silk" onclick="escolherTecido('silk')">
+              <img src="./img/Seda.png">
+            </div>
+            <p>Seda</p>
+          </div>
+
+          <div>
+            <div class="cotton" onclick="escolherTecido('cotton')">
+              <img src="./img/Algodão.png">
+            </div>
+            <p>Algodão</p>
+          </div>
         
+          <div>
+            <div class="polyester" onclick="escolherTecido('polyester')">
+              <img src="./img/Poliester.png">
+            </div>
+            <p>Poliéster</p>
+            </div>
+          </div>
 
 
+          <h1>Imagem de referência</h1>
+          <div class="linkimagem">
+            <input id="imgLink" type="text" placeholder="Insira o link com final .jpeg, .jpg ou .png" oninput="checkURL()"> 
+            <button id="botao" onclick="enviarPedido()" >Confirmar pedido</button>
+          </div>
+      </section>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script> 
+      <section class="arteLateral">
+          <img src="./img/ilustração.png">
+      </section>
+    </main>
+
+  <footer>
+      <div class="displayProdutos">
+        <h2>Últimos pedidos</h2>
+        <div class="produtos"></div>
+      </div>
+  </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="javascript.js"> </script>
 

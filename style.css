@@ -4,6 +4,7 @@ body{
     background-color: #E5E5E5;
 
     width: 100%;
+    min-width: 450px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -119,6 +120,12 @@ main .displayMontarProduto .modelos{
     margin: 0 auto 0 auto;
 }
 
+main section div div{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 main section div div div{
     position: relative;
     width: 100px;
@@ -160,16 +167,22 @@ main .displayMontarProduto .tecido{
     margin: 0 auto 0 auto;
  }
 
+ .linkimagem{
+    width: 500px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto 0 auto;
+ }
+
  input{
-    width: 396.27px;
+    width: 500px;
     height: 40px;
-    left: 121.99px;
-    top: 729.92px;
-    
     background: #F2F2F2;
     border-radius: 10px;
     border: none;
-    margin: 10px auto auto 125px;
+    margin-top: 10px;
  }
 
 ::placeholder{
@@ -183,11 +196,10 @@ main .displayMontarProduto .tecido{
  }
 
  button{
-    width: 398.61px;
+    width: 500px;
     height: 40px;
-    left: 123.73px;
     top: 793.68px;
-    
+
     background: #C4C4C4;
     border-radius: 10px;
     border: none;
@@ -200,10 +212,10 @@ main .displayMontarProduto .tecido{
     line-height: 23px;
     
     color: #FCFCFC;
-    margin: 24px auto auto 125px;
+    margin-top: 25px;
  }
 
- .botao.finalizar{
+ .finalizar{
     background-color: #404EED;
  }
 /*--------------------------------------------------*/
@@ -216,7 +228,6 @@ main .displayMontarProduto .tecido{
     width: 100%;
     height: fit-content;
     top: 873px;
-    left: 0px;
 
     display: flex;
     flex-direction: column;
@@ -237,11 +248,12 @@ footer .displayProdutos  h2{
  }
 
 footer .displayProdutos .produtos{
-    height: 250px;
+    height: 270px;
     display: flex;
     flex-direction: row;
-    margin: 15px 16px 30px 119px;
+    margin: 15px 100px 30px 119px;
     overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 footer .displayProdutos .caixa{
@@ -260,6 +272,7 @@ footer .displayProdutos .caixa{
 }
 
 footer .displayProdutos .caixa img{
+    width: 175px;
     margin-top: 2px;
 }
 
@@ -289,31 +302,40 @@ footer .displayProdutos h3{
     main .arteLateral{
         display: none;
     }
+
+    main .displayMontarProduto{
+        margin: auto;
+    }
 }
 
-@media (max-width: 620px){
-    main{
-        height: fit-content;
+@media (max-width: 900px){
+    h1{
+        margin-left: 15%;
     }
-    main .displayMontarProduto{
-        height: fit-content;
-    }
+
     main .displayMontarProduto .modelos{
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-       bottom: 40px;
+        width: 70%;
     }
-    
+
     main .displayMontarProduto .gola{
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
+        width: 70%;
     }
 
     main .displayMontarProduto .tecido{
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-     }
+        width: 70%;
+    }
+
+    input{
+        width: 80%;
+    }
+
+    button{
+        width: 80%;
+    }
+}
+
+@media (max-width: 450px){
+    footer div .produtos{
+        width: 300px;
+    }
 }
