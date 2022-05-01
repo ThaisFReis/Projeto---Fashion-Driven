@@ -87,7 +87,8 @@ function checkURL (){
 }
 
 function validarURL(url) {
-  return (url.match(/\.(ipeg|ipg|png)$/) != null);
+  let link = /(http(s?):|www.|http(s?)\/\/www.|[a-zA-z/|.|\w|\s|-])*\.(?:jpg|gif|png)\[a-zA-z-\/|.|\w|\s|-]/g
+  return link.test(url)
 }
 
 function enviarPedido(){
